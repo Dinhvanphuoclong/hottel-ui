@@ -1,10 +1,4 @@
-/* =====================================================
-   Hotel Manager - app.js (Refactor, giữ nguyên chức năng)
-   - Giảm trùng lặp, gom helper, tối ưu DOM & sự kiện
-   - Không bỏ chức năng nào; API UI/LocalStorage vẫn như cũ
-   ===================================================== */
 
-/************** HẰNG SỐ & TIỆN ÍCH CHUNG **************/
 const LS_KEYS = {
   users: 'hm_users',
   current: 'hm_user',
@@ -530,3 +524,4 @@ function refreshAll(){
   renderStats();
   
 }
+
