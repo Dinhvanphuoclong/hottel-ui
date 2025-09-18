@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tài khoản</title>
+
+  <!-- Font đẹp -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- BANNER TRANG TÀI KHOẢN -->
+  <header class="page-banner account"></header>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="container wrap">
+      <div class="brand">Hotel Manager</div>
+      <nav class="nav">
+        <li><a href="index.html">🏠 Giới thiệu</a></li>
+        <a href="booking.html" id="nav-home">Thuê phòng</a>
+        <a href="history.html" id="nav-history">Lịch sử</a>
+        <a href="services.html" id="nav-services">Dịch vụ</a>
+          <a href="rooms.html" id="nav-rooms">Danh sách phòng</a>
+        <a href="customers.html" id="nav-customers">Khách hàng</a>
+        <a href="account.html" id="nav-account">Tài khoản</a>
+        <a href="stats.html" id="nav-stats">Thống kê</a>
+      </nav>
+      <div class="auth-actions">
+        <span id="helloUser" class="muted">Chưa đăng nhập</span>
+        <button id="btnOpenLogin" class="btn small">Đăng nhập</button>
+        <button id="btnOpenRegister" class="btn small outline">Đăng ký</button>
+        <button id="btnLogout" class="btn small danger hidden">Đăng xuất</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ĐĂNG NHẬP -->
+  <div class="modal hidden" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <div class="dialog dialog-login" role="document">
+      <button class="dialog-close" id="closeLogin" aria-label="Đóng">&times;</button>
+
+      <div class="login-header">
+        <div class="login-logo">🏨</div>
+        <h3 id="loginTitle">Đăng nhập</h3>
+        <p class="muted">Đăng nhập để quản lý và đặt phòng</p>
+      </div>
+
+      <form id="loginForm" class="login-form" autocomplete="on" novalidate>
+        <label for="lgUser">Tên đăng nhập</label>
+        <input id="lgUser" name="username" type="text" placeholder="Nhập tên đăng nhập" required autofocus>
+
+        <label for="lgPass">Mật khẩu</label>
+        <input id="lgPass" name="password" type="password" placeholder="Nhập mật khẩu" required>
+
+        <div class="login-extra">
+          <label class="remember"><input id="rememberMe" type="checkbox"> Ghi nhớ đăng nhập</label>
+          <a href="#" class="muted small">Quên mật khẩu?</a>
+        </div>
+
+        <div class="modal-actions" style="margin-top:12px;">
+          <button type="button" class="btn" id="cancelLogin">Hủy</button>
+          <button type="submit" class="btn primary" id="doLogin">Đăng nhập</button>
+        </div>
+
+        <div class="login-divider"><span>hoặc</span></div>
+
+        <div class="social-login">
+          <button type="button" class="btn outline">Đăng nhập với Google</button>
+          <button type="button" class="btn outline">Đăng nhập với Facebook</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL ĐĂNG KÝ -->
+  <div class="modal hidden" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+    <div class="dialog dialog-login" role="document">
+      <button class="dialog-close" id="closeRegister" aria-label="Đóng">&times;</button>
+
+      <div class="login-header">
+        <div class="login-logo">📝</div>
+        <h3 id="registerTitle">Đăng ký</h3>
+        <p class="muted">Tạo tài khoản mới để đặt phòng</p>
+      </div>
+
+      <form id="registerForm" class="login-form" autocomplete="on" novalidate>
+        <label for="rgUser">Tên đăng nhập (≥ 6 ký tự)</label>
+        <input id="rgUser" name="rgUser" type="text" placeholder="Tên đăng nhập" required>
+
+        <label for="rgPass">Mật khẩu (≥ 6 ký tự)</label>
+        <input id="rgPass" name="rgPass" type="password" placeholder="Mật khẩu" required>
+
+        <label for="rgPass2">Nhập lại mật khẩu</label>
+        <input id="rgPass2" name="rgPass2" type="password" placeholder="Nhập lại mật khẩu" required>
+
+        <div class="modal-actions" style="margin-top:12px;">
+          <button type="button" class="btn" id="cancelRegister">Hủy</button>
+          <button type="submit" class="btn primary" id="doRegister">Tạo tài khoản</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- NỘI DUNG TRANG TÀI KHOẢN -->
+  <div class="container">
+    <h2 class="section-title">Thông tin tài khoản</h2>
+    <div class="panel">
+      <p>Đang đăng nhập: <b id="accWho">—</b></p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div>
+          <h3>Đổi mật khẩu</h3>
+          <label>Mật khẩu hiện tại</label><input id="pwOld" type="password">
+          <label>Mật khẩu mới</label><input id="pwNew" type="password">
+          <label>Nhập lại mật khẩu mới</label><input id="pwNew2" type="password">
+          <div style="margin-top:8px;display:flex;justify-content:flex-end">
+            <button class="btn primary" id="btnChangePw">Đổi mật khẩu</button>
+          </div>
+        </div>
+        <div>
+          <h3>Phân quyền (Admin)</h3>
+          <div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap">
+            <input id="accUser" placeholder="Username">
+            <select id="accRole">
+              <option value="staff">Lễ tân</option>
+              <option value="accountant">Kế toán</option>
+              <option value="admin">Admin</option>
+            </select>
+            <button class="btn" id="btnSetRole">Gán quyền</button>
+          </div>
+          <div class="table-wrap" style="margin-top:8px">
+            <table>
+              <thead><tr><th>User</th><th>Quyền</th></tr></thead>
+              <tbody id="tblRoles"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

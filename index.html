@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khách sạn Cola Cosi – Giới thiệu chuyên sâu</title>
+<link rel="stylesheet" href="style.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:sans-serif;line-height:1.6;color:#333}
+
+/* ===== Hero ===== */
+.hero{
+  background:url('images/hotel.webp') center/cover no-repeat;
+  height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;color:white;position:relative;
+}
+.hero::after{
+  content:"";position:absolute;top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,0.4);
+}
+.hero-content{position:relative;z-index:1;max-width:800px;padding:0 15px;}
+.hero h1{font-size:56px;margin-bottom:20px}
+.hero p{font-size:20px;margin-bottom:30px}
+.hero a{
+  background:#ffcc00;color:#000;
+  padding:12px 28px;border-radius:8px;
+  text-decoration:none;font-weight:bold;
+}
+.hero a:hover{background:#ffb700}
+
+/* ===== Section chung ===== */
+.section{padding:70px 20px;max-width:1100px;margin:auto;}
+.section h2{text-align:center;margin-bottom:25px;font-size:34px;color:#0078d7;}
+.section p.intro{text-align:center;font-size:18px;margin-bottom:45px;}
+
+/* ===== Dịch vụ ===== */
+.services{display:flex;flex-wrap:wrap;gap:25px;justify-content:center;}
+.card{
+  background:#f9f9f9;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  width:300px;padding:20px;text-align:center;transition:transform .2s;
+}
+.card:hover{transform:translateY(-5px);}
+.card img{width:100%;height:180px;object-fit:cover;border-radius:12px;margin-bottom:15px;}
+.card h3{margin-bottom:10px;color:#0078d7;}
+.card p{font-size:15px;}
+
+/* ===== Phòng nổi bật ===== */
+.rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;}
+.room img{width:100%;border-radius:12px;height:180px;object-fit:cover}
+.room h4{margin:10px 0 5px;color:#444;}
+.room .price{color:#d12727;font-weight:bold}
+
+/* ===== Testimonials ===== */
+.testimonials{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
+.testimonial{
+  background:#fafafa;border-left:4px solid #0078d7;
+  padding:20px;width:300px;border-radius:8px;font-style:italic;
+}
+.testimonial .author{margin-top:10px;font-weight:bold;color:#333}
+
+/* ===== Map ===== */
+.map{text-align:center;margin-top:30px;}
+.map iframe{width:100%;height:350px;border:0;border-radius:12px;}
+
+/* ===== Footer ===== */
+footer{background:#222;color:#fff;text-align:center;padding:25px 15px;margin-top:70px;}
+footer a{color:#ffcc00;text-decoration:none}
+footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>🏨 Khách sạn Cola Cosi</h1>
+    <p>Nơi nghỉ dưỡng đẳng cấp – Trải nghiệm khó quên bên bờ biển</p>
+    <a href="booking.html">→ Đặt phòng / Quản lý ←</a>
+  </div>
+</section>
+
+<!-- Về chúng tôi -->
+<section class="section">
+  <h2>Câu chuyện của chúng tôi</h2>
+  <p class="intro">Từ năm 1995, Cola Cosi đã trở thành biểu tượng nghỉ dưỡng 5 sao giữa lòng thành phố biển xinh đẹp.
+Với kiến trúc tinh tế, kết hợp hài hòa giữa vẻ sang trọng cổ điển của châu Âu và nét duyên truyền thống Việt Nam, chúng tôi mang đến cho du khách không gian vừa đẳng cấp vừa gần gũi, tạo nên dấu ấn khó quên ngay từ khoảnh khắc đầu tiên đặt chân đến.
+
+Trải qua gần ba thập kỷ hình thành và phát triển, Cola Cosi không ngừng nâng cấp và đổi mới để xứng đáng với danh xưng “điểm đến hàng đầu cho những kỳ nghỉ đẳng cấp quốc tế”.
+Hệ thống phòng nghỉ của chúng tôi được thiết kế rộng rãi, tiện nghi và hiện đại, hầu hết đều có ban công nhìn ra biển xanh mát. Mỗi chi tiết từ chăn ga, ánh sáng cho đến mùi hương đều được chăm chút kỹ lưỡng, mang đến cảm giác thư thái và trọn vẹn.
+
+Du khách đến với Cola Cosi có thể tận hưởng hồ bơi vô cực trong xanh, khu spa & massage cao cấp, và những bữa tiệc ẩm thực tinh hoa tại nhà hàng 5 sao do các đầu bếp quốc tế đảm nhiệm.
+Chúng tôi còn tổ chức nhiều hoạt động giải trí, du lịch biển và dịch vụ đưa đón chuyên nghiệp, giúp quý khách khám phá trọn vẹn vẻ đẹp của thành phố biển.
+
+Điều làm nên giá trị bền vững của Cola Cosi chính là tinh thần hiếu khách và sự tận tâm của đội ngũ nhân viên.
+Mỗi nụ cười, mỗi cử chỉ phục vụ đều xuất phát từ mong muốn đem lại cho du khách một kỳ nghỉ trọn vẹn, đáng nhớ và ấm áp như ở chính ngôi nhà của mình.
+
+Cola Cosi – nơi giao thoa giữa vẻ đẹp thiên nhiên, văn hóa và dịch vụ đẳng cấp, là điểm dừng chân lý tưởng cho mọi chuyến nghỉ dưỡng, hội họp hay kỷ niệm đặc biệt của bạn và gia đình</p>
+</section>
+
+<!-- Dịch vụ nổi bật -->
+<section class="section">
+  <h2>Dịch vụ nổi bật</h2>
+  <div class="services">
+    <div class="card">
+      <img src="images/hoboi.jpg" alt="Hồ bơi">
+      <h3>Hồ bơi vô cực</h3>
+      <p>Tận hưởng làn nước trong xanh và view toàn cảnh thành phố.</p>
+    </div>
+    <div class="card">
+      <img src="images/spa.jpg" alt="Spa">
+      <h3>Spa &amp; Massage</h3>
+      <p>Thư giãn với các liệu pháp massage chuyên nghiệp.</p>
+    </div>
+    <div class="card">
+      <img src="images/nhahang.jpg" alt="Nhà hàng">
+      <h3>Nhà hàng 5 sao</h3>
+      <p>Thưởng thức tinh hoa ẩm thực Á – Âu cùng đầu bếp danh tiếng.</p>
+    </div>
+    <div class="card">
+      <img src="images/gym.jpg" alt="Phòng gym">
+      <h3>Phòng Gym hiện đại</h3>
+      <p>Trang thiết bị cao cấp, huấn luyện viên giàu kinh nghiệm.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Loại phòng tiêu biểu -->
+<section class="section">
+  <h2>Phòng nghỉ tiêu biểu</h2>
+  <div class="rooms">
+    <div class="room">
+      <img src="images/phongdeluxe.jpg" alt="Deluxe">
+      <h4>Phòng Deluxe</h4>
+      <p class="price>Từ 2.500.000đ/đêm</p>
+    </div>
+    <div class="room">
+      <img src="images/phongsuite.jpg" alt="Suite">
+      <h4>Phòng Suite</h4>
+      <p class="price">Từ 4.200.000đ/đêm</p>
+    </div>
+    <div class="room">
+      <img src="images/presidential.jpg" alt="Presidential Suite">
+      <h4>Presidential Suite</h4>
+      <p class="price">Từ 9.000.000đ/đêm</p>
+    </div>
+  </div>
+</section>
+
+<!-- Đánh giá khách hàng -->
+<section class="section">
+  <h2>Khách hàng nói gì</h2>
+  <div class="testimonials">
+    <div class="testimonial">
+      “Kỳ nghỉ tuyệt vời, phòng ốc sạch sẽ và nhân viên cực kỳ thân thiện.”
+      <div class="author">– Anh Minh, Hà Nội</div>
+    </div>
+    <div class="testimonial">
+      “Hồ bơi vô cực quá đẹp, ẩm thực đa dạng và chất lượng.”
+      <div class="author">– Chị Lan, TP.HCM</div>
+    </div>
+    <div class="testimonial">
+      “Dịch vụ Spa đẳng cấp, cảm giác như ở thiên đường.”
+      <div class="author">– Mr. John, UK</div>
+    </div>
+  </div>
+</section>
+
+<!-- Bản đồ & liên hệ -->
+<section class="section map">
+  <h2>Vị trí & Liên hệ</h2>
+  <p class="intro">123 Đường Biển, TP. Nha Trang – Hotline: 0354052171 – Email: info@khachsanColaCosi.com</p>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4607514473785!2d109.190506!3d12.245075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1svi!2s!4v0000000000" allowfullscreen="" loading="lazy"></iframe>
+</section>
+
+<footer>
+  © 2025 Khách sạn Cola Cosi – Hotline: 0354052171 – Email: info@khachsanColaCosi.com
+</footer>
+
+</body>
+</html>

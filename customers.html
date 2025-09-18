@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quản lý khách hàng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<header class="page-banner customers">
+</header>
+
+<body>
+
+<!-- TOPBAR + MODALS -->
+<div class="topbar">
+  <div class="container wrap">
+    <div class="brand">Hotel Manager</div>
+    <nav class="nav">
+      <li><a href="index.html">🏠giới thiệu</a></li>
+      <a href="booking.html" id="nav-home">Thuê phòng</a>
+      <a href="history.html" id="nav-history">Lịch sử</a>
+      <a href="services.html" id="nav-services">Dịch vụ</a>
+        <a href="rooms.html" id="nav-rooms">Danh sách phòng</a>
+      <a href="customers.html" id="nav-customers">Khách hàng</a>
+      <a href="account.html" id="nav-account">Tài khoản</a>
+      <a href="stats.html" id="nav-stats">Thống kê</a>
+    </nav>
+    <div class="auth-actions">
+      <span id="helloUser" class="muted">Chưa đăng nhập</span>
+      <button id="btnOpenLogin" class="btn small">Đăng nhập</button>
+      <button id="btnOpenRegister" class="btn small outline">Đăng ký</button>
+      <button id="btnLogout" class="btn small danger hidden">Đăng xuất</button>
+    </div>
+  </div>
+</div>
+<div class="modal hidden" id="loginModal"><div class="dialog"><h3>Đăng nhập</h3><label>Tên đăng nhập</label><input id="lgUser"/><label>Mật khẩu</label><input id="lgPass" type="password"/><div class="modal-actions"><button class="btn" id="closeLogin">Hủy</button><button class="btn primary" id="doLogin">Đăng nhập</button></div></div></div>
+<div class="modal hidden" id="registerModal"><div class="dialog"><h3>Đăng ký</h3><label>Tên đăng nhập (≥ 3 ký tự)</label><input id="rgUser"/><label>Mật khẩu (≥ 4 ký tự)</label><input id="rgPass" type="password"/><label>Nhập lại mật khẩu</label><input id="rgPass2" type="password"/><div class="modal-actions"><button class="btn" id="closeRegister">Hủy</button><button class="btn primary" id="doRegister">Tạo tài khoản</button></div></div></div>
+
+<!-- NỘI DUNG -->
+<div class="container">
+  <h2 class="section-title">Quản lý khách hàng</h2>
+  <div class="panel">
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:16px">
+      <div>
+        <label>Họ tên</label><input id="cName">
+        <label>Điện thoại</label><input id="cPhone">
+        <label>Email</label><input id="cEmail">
+        <label>Ghi chú</label><textarea id="cNote"></textarea>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+          <button class="btn" id="btnClearCustomer">Xóa trắng</button>
+          <button class="btn primary" id="btnSaveCustomer">Lưu</button>
+          <button class="btn danger" id="btnDeleteCustomer">Xoá</button>
+        </div>
+      </div>
+      <div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Tên</th><th>Điện thoại</th><th>Email</th><th>Ghi chú</th></tr></thead>
+            <tbody id="tblCustomers"></tbody>
+          </table>
+        </div>
+        <p class="muted">Bấm 1 dòng để nạp vào form.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

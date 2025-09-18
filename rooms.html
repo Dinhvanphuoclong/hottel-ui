@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danh sách phòng</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="page-banner rooms">
+  <h1></h1>
+</header>
+
+<div class="topbar">
+  <div class="container wrap">
+    <div class="brand">Hotel Manager</div>
+    <nav class="nav">
+      <li><a href="index.html">🏠giới thiệu</a></li>
+      <a href="booking.html" id="nav-home">Thuê phòng</a>
+      <a href="history.html" id="nav-history">Lịch sử</a>
+      <a href="services.html" id="nav-services">Dịch vụ</a>
+      <a href="customers.html" id="nav-customers">Khách hàng</a>
+      <a href="rooms.html" id="nav-rooms">Danh sách phòng</a>
+      <a href="account.html" id="nav-account">Tài khoản</a>
+      <a href="stats.html" id="nav-stats">Thống kê</a>
+    </nav>
+    <div class="auth-actions">
+      <span id="helloUser" class="muted">Chưa đăng nhập</span>
+      <button id="btnOpenLogin" class="btn small">Đăng nhập</button>
+      <button id="btnOpenRegister" class="btn small outline">Đăng ký</button>
+      <button id="btnLogout" class="btn small danger hidden">Đăng xuất</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="section-title">Tình trạng các phòng</h2>
+  <div id="roomGrid" class="room-grid"></div>
+</div>
+
+<script src="app.js"></script>
+<script src="rooms.js"></script>
+</body>
+</html>

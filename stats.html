@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thống kê doanh thu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<header class="page-banner stats">
+</header>
+
+<body>
+
+<!-- TOPBAR + MODALS -->
+<div class="topbar">
+  <div class="container wrap">
+    <div class="brand">Hotel Manager</div>
+    <nav class="nav">
+      <li><a href="index.html">🏠giới thiệu</a></li>
+      <a href="booking.html" id="nav-home">Thuê phòng</a>
+      <a href="history.html" id="nav-history">Lịch sử</a>
+      <a href="services.html" id="nav-services">Dịch vụ</a>
+        <a href="rooms.html" id="nav-rooms">Danh sách phòng</a>
+      <a href="customers.html" id="nav-customers">Khách hàng</a>
+      <a href="account.html" id="nav-account">Tài khoản</a>
+      <a href="stats.html" id="nav-stats">Thống kê</a>
+    </nav>
+    <div class="auth-actions">
+      <span id="helloUser" class="muted">Chưa đăng nhập</span>
+      <button id="btnOpenLogin" class="btn small">Đăng nhập</button>
+      <button id="btnOpenRegister" class="btn small outline">Đăng ký</button>
+      <button id="btnLogout" class="btn small danger hidden">Đăng xuất</button>
+    </div>
+  </div>
+</div>
+<div class="modal hidden" id="loginModal"><div class="dialog"><h3>Đăng nhập</h3><label>Tên đăng nhập</label><input id="lgUser"/><label>Mật khẩu</label><input id="lgPass" type="password"/><div class="modal-actions"><button class="btn" id="closeLogin">Hủy</button><button class="btn primary" id="doLogin">Đăng nhập</button></div></div></div>
+<div class="modal hidden" id="registerModal"><div class="dialog"><h3>Đăng ký</h3><label>Tên đăng nhập (≥ 3 ký tự)</label><input id="rgUser"/><label>Mật khẩu (≥ 4 ký tự)</label><input id="rgPass" type="password"/><label>Nhập lại mật khẩu</label><input id="rgPass2" type="password"/><div class="modal-actions"><button class="btn" id="closeRegister">Hủy</button><button class="btn primary" id="doRegister">Tạo tài khoản</button></div></div></div>
+
+<!-- NỘI DUNG -->
+<div class="container">
+  <h2 class="section-title">Thống kê doanh thu</h2>
+  <div class="panel">
+    <div class="cards">
+      <div class="card"><div class="label">Doanh thu (tổng)</div><div class="num" id="statRevenue">—</div></div>
+      <div class="card"><div class="label">Đơn đã đặt</div><div class="num" id="statBookings">—</div></div>
+      <div class="card"><div class="label">Phòng đang ở</div><div class="num" id="statOccupied">—</div></div>
+    </div>
+  </div>
+</div>
+<h3 class="section-title">Biểu đồ doanh thu theo tháng</h3>
+<div class="panel">
+   <canvas id="revenueChart" height="120"></canvas>
+</div>
+
+<script src="app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Code vẽ biểu đồ doanh thu -->
+<script>
+// ====== Giả lập dữ liệu doanh thu theo tháng từ localStorage invoices ======
+const invoices = read ? read('hm_invoices', []) : JSON.parse(localStorage.getItem('hm_invoices')||'[]');
+
+// Gom doanh thu theo tháng
+const months = ['1','2','3','4','5','6','7','8','9','10','11','12'];
+const revenueByMonth = new Array(12).fill(0);
+invoices.forEach(inv => {
+    const m = new Date(inv.issuedAt).getMonth(); // 0-11
+    revenueByMonth[m] += inv.amount || 0;
+});
+
+// ====== Vẽ biểu đồ ======
+const ctx = document.getElementById('revenueChart').getContext('2d');
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: months.map(m => 'Tháng ' + m),
+        datasets: [{
+            label: 'Doanh thu (đ)',
+            data: revenueByMonth,
+            borderColor: '#0066cc',
+            backgroundColor: 'rgba(0,102,204,0.2)',
+            tension: 0.3,
+            fill: true,
+            pointRadius: 4,
+            pointBackgroundColor: '#0066cc'
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                ticks: {
+                    callback: v => v.toLocaleString('vi-VN') + ' đ'
+                }
+            }
+        },
+        plugins: {
+            legend: { display: true },
+            title: { display: false }
+        }
+    }
+});
+</script>
+</body>
+</html>

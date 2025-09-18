@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thuê phòng</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+<header class="page-banner booking">
+</header>
+
+</header>
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container wrap">
+    <div class="brand">Hotel Manager</div>
+    <nav class="nav">
+      <li><a href="index.html">🏠giới thiệu</a></li>
+      <a href="booking.html" id="nav-home">Thuê phòng</a>
+      <a href="history.html" id="nav-history">Lịch sử</a>
+      <a href="services.html" id="nav-services">Dịch vụ</a>
+        <a href="rooms.html" id="nav-rooms">Danh sách phòng</a>
+      <a href="customers.html" id="nav-customers">Khách hàng</a>
+      <a href="account.html" id="nav-account">Tài khoản</a>
+      <a href="stats.html" id="nav-stats">Thống kê</a>
+    </nav>
+    <div class="auth-actions">
+      <span id="helloUser" class="muted">Chưa đăng nhập</span>
+      <button id="btnOpenLogin" class="btn small">Đăng nhập</button>
+      <button id="btnOpenRegister" class="btn small outline">Đăng ký</button>
+      <button id="btnLogout" class="btn small danger hidden">Đăng xuất</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<!-- LOGIN MODAL (replace old login modal) -->
+<div class="modal hidden" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+  <div class="dialog dialog-login" role="document">
+    <button class="dialog-close" id="closeLogin" aria-label="Đóng">&times;</button>
+
+    <div class="login-header">
+      <div class="login-logo">🏨</div>
+      <h3 id="loginTitle">Đăng nhập</h3>
+      <p class="muted">Đăng nhập để quản lý và đặt phòng</p>
+    </div>
+
+    <form id="loginForm" class="login-form" autocomplete="on" novalidate>
+      <label for="lgUser">Tên đăng nhập</label>
+      <input id="lgUser" name="username" type="text" placeholder="Nhập tên đăng nhập" required autofocus>
+
+      <label for="lgPass">Mật khẩu</label>
+      <input id="lgPass" name="password" type="password" placeholder="Nhập mật khẩu" required>
+
+      <div class="login-extra">
+        <label class="remember"><input id="rememberMe" type="checkbox"> Ghi nhớ đăng nhập</label>
+        <a href="#" class="muted small">Quên mật khẩu?</a>
+      </div>
+
+      <div class="modal-actions" style="margin-top:12px;">
+        <button type="button" class="btn" id="cancelLogin">Hủy</button>
+        <button type="submit" class="btn primary" id="doLogin">Đăng nhập</button>
+      </div>
+
+      <div class="login-divider"><span>hoặc</span></div>
+
+      <div class="social-login">
+        <button type="button" class="btn outline">Đăng nhập với Google</button>
+        <button type="button" class="btn outline">Đăng nhập với Facebook</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="modal hidden" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+  <div class="dialog dialog-login" role="document">
+    <button class="dialog-close" id="closeRegister" aria-label="Đóng">&times;</button>
+
+    <div class="login-header">
+      <div class="login-logo">📝</div>
+      <h3 id="registerTitle">Đăng ký</h3>
+      <p class="muted">Tạo tài khoản mới để đặt phòng</p>
+    </div>
+
+    <form id="registerForm" class="login-form" autocomplete="on" novalidate>
+      <label for="rgUser">Tên đăng nhập (≥ 3 ký tự)</label>
+      <input id="rgUser" name="rgUser" type="text" placeholder="Tên đăng nhập" required>
+
+      <label for="rgPass">Mật khẩu (≥ 4 ký tự)</label>
+      <input id="rgPass" name="rgPass" type="password" placeholder="Mật khẩu" required>
+
+      <label for="rgPass2">Nhập lại mật khẩu</label>
+      <input id="rgPass2" name="rgPass2" type="password" placeholder="Nhập lại mật khẩu" required>
+
+      <div class="modal-actions" style="margin-top:12px;">
+        <button type="button" class="btn" id="cancelRegister">Hủy</button>
+        <button type="submit" class="btn primary" id="doRegister">Tạo tài khoản</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- NỘI DUNG -->
+<div class="container">
+ 
+  <h2 class="section-title">Thuê phòng</h2>
+  <div class="form-box">
+  <div><label>Nhận phòng</label><input id="checkin" type="datetime-local" /></div>
+  <div><label>Trả phòng</label><input id="checkout" type="datetime-local" /></div>
+  <div><label>Số khách</label>
+    <select id="guests">
+      <option>1 người</option>
+      <option selected>2 người</option>
+      <option>3 người</option>
+      <option>4 người</option>
+    </select>
+  </div>
+  <div><label>Số phòng</label>
+    <select id="roomsCount">
+      <option selected>1 phòng</option>
+      <option>2 phòng</option>
+    </select>
+  </div>
+
+  <!-- CHÈN DỊCH VỤ Ở ĐÂY -->
+  <div>
+    <label>Dịch vụ bổ sung</label>
+    <div id="servicesList" class="services-checkbox"></div>
+  </div>
+
+  <div style="align-self:flex-end;"><button class="btn primary" id="btnBook">Đặt phòng</button></div>
+</div>
+
+
+ <h2 class="section-title">Các phòng nổi bật</h2>
+<div class="rooms-wrapper">
+  <button class="scroll-btn left">&#8249;</button>
+  <div class="rooms" id="roomList">
+    
+    <!-- Các phòng vẫn giữ nguyên -->
+    <div class="room" data-room-id="101" data-price="100000"><img src="images/p1.jpg"><p><b>Phòng 101</b></p><p class="price">100.000 đ</p><button class="btn small select-room">Chọn phòng</button></div>
+    <div class="room" data-room-id="102" data-price="100000"><img src="images/p2.jpg"><p><b>Phòng 102</b></p><p class="price">100.000 đ</p><button class="btn small select-room">Chọn phòng</button></div>
+    <div class="room" data-room-id="103" data-price="120000"><img src="images/p3.jpg"><p><b>Phòng 103</b></p><p class="price">120.000 đ</p><button class="btn small select-room">Chọn phòng</button></div>
+    <div class="room" data-room-id="104" data-price="150000"><img src="images/p4.jpg"><p><b>Phòng 104</b></p><p class="price">150.000 đ</p><button class="btn small select-room">Chọn phòng</button></div>
+    <div class="room" data-room-id="105" data-price="170000"><img src="images/p5.jpg"><p><b>Phòng 105</b></p><p class="price">170.000 đ</p><button class="btn small select-room">Chọn phòng</button></div>
+    <div class="room" data-room-id="106" data-price="180000"><img src="images/p6.jpg"><p><b>Phòng 106</b></p><p class="price">150.000 đ</p><button class="btn small select-room">Chọn phòng</button></div>
+    <div class="room" data-room-id="107" data-price="190000"><img src="images/p7.jpg"><p><b>Phòng 107</b></p><p class="price">150.000 đ</p><button class="btn small select-room">Chọn phòng</button></div>
+
+
+  </div>
+  <button class="scroll-btn right">&#8250;</button>
+</div>
+
+</div>  
+<script src="app.js"></script>
+
+</body>
+</html>
